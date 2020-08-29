@@ -1,0 +1,146 @@
+.bar {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    width: 100%;
+    padding: 1.75em 5em;
+    text-align: center;
+    background: #191a1b;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.filter {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.filter__label {
+    font-size: .85em;
+    display: inline-block;
+    margin: 0 2%;
+    font-weight: bold;
+    color: #393A3F;
+}
+
+.filter__item--selected {
+    color: #5c5edc !important;
+    border-color: #5c5edc !important;
+}
+
+.filter__item {
+    font-weight: bold;
+    margin: 0 2%;
+    padding: .1em;
+    vertical-align: middle;
+    color: #a3a3b3;
+    border-bottom: 2px solid transparent !important;
+}
+
+.action {
+    font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 1.05em;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: .25em;
+    cursor: pointer;
+    color: #fff;
+    background: none;
+}
+
+.filter__item .icon {
+    font-size: 1.75em;
+    display: none;
+}
+
+.icon {
+    font-family: 'pixelfabric-clothes';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.cart {
+    font-size: 1.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    height: 100%;
+    padding: 0 1.195em;
+    cursor: pointer;
+    color: #abacae;
+    border: none;
+    background-color: #131415;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+
+.text-hidden {
+    position: absolute;
+    top: 200%;
+}
+
+.cart__count {
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 15px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+    margin: -16px 0 0 0;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    background: #5c5edc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
