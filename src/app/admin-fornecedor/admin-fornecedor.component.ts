@@ -21,6 +21,8 @@ export class AdminFornecedorComponent implements OnInit {
   @Input()
   public fornecedores: any;
 
+  public preEdite: number;
+
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
@@ -67,13 +69,68 @@ export class AdminFornecedorComponent implements OnInit {
       this.fornecedores = aux.deleteFornecedor;
      })
   }
-  
-  onSubmit() {
+
+  editar(fornecedor: any) {
+    this.apollo.mutate({
+      mutation: gql`
+        mutation {
+          updateFornecedor(data: {
+            id: ${this.preEdite},
+            nome: "${fornecedor.nome}",
+            cnpj: "${fornecedor.cnpj}",
+            endereco: "${fornecedor.endereco}",
+            telefone: "${fornecedor.telefone}"
+          }){
+            id,
+            nome,
+            cnpj,
+            endereco,
+            telefone
+          }
+        }
+      `,
+    }).subscribe(({ data }) => {
+      console.log(data)
+      let aux: any = data;
+      this.fornecedores = aux.updateFornecedor;
+     })
     
   }
 
+  adicionar(fornecedor: any) {
+    this.apollo.mutate({
+      mutation: gql`
+        mutation {
+          createFornecedor(data: {
+            nome: "${fornecedor.nome}",
+            cnpj: "${fornecedor.cnpj}",
+            endereco: "${fornecedor.endereco}",
+            telefone: "${fornecedor.telefone}"
+          }){
+            id,
+            nome,
+            cnpj,
+            endereco,
+            telefone
+          }
+        }
+      `,
+    }).subscribe(({ data }) => {
+      let aux: any = data;
+      this.fornecedores = aux.createFornecedor;
+     })
+  }
+  
+  onSubmit() {
+    this.editar(this.profileForm.value)
+  }
+
   onSubmit1() {
-    
+    this.adicionar(this.profileForm.value)
+  }
+
+  preEditar(id: number) {
+    this.preEdite = id;
   }
 
   javascript() {

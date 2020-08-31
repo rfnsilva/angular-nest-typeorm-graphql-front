@@ -25,7 +25,7 @@
         <td>{{fornecedor?.telefone}}</td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
+                <button (click)="preEditar(fornecedor?.id)" type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
                 <button (click)="deletar(fornecedor?.id)" type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-secondary">del</button>
                 <button type="button" data-toggle="modal" data-target="#exampleModal3" class="btn btn-secondary">detalhes</button>
             </div>
@@ -90,9 +90,6 @@
           <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
             <div class="form-group">
-              <label>ID</label>
-              <input disabled="" type="text" value="" class="form-control">
-              <br />
               <label>Nome</label>
               <input formControlName="nome" name="nome" type="text" class="form-control" value="" aria-describedby="nome" placeholder="nome">
             
