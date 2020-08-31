@@ -44,8 +44,8 @@ import uri from './config/graphql.module'
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(apolloBoost: ApolloBoost) {
-    apolloBoost.create({
+  constructor(private apolloBoost: ApolloBoost) {
+    this.apolloBoost.create({
       uri,
     });
   }
