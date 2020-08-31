@@ -1,0 +1,127 @@
+<div style="margin: 23px 0 15px 0;" class="row">
+  <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+    <button data-toggle="modal" data-target="#exampleModal4" class="btn btn-secondary" style="float: right;margin-right: 18px;background-color: #EF8354;">adicionar</button>
+  </div>
+</div>
+
+<div class="container-fluid table-responsive" style="padding: 0 5px 0 70px !important;">
+  <table class="table table-hover table-dark" style="width: 88vw;">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">FornecedorId</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Nome</td>
+        <td>FornecedorId</td>
+        <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
+                <button type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-secondary">del</button>
+                <button type="button" data-toggle="modal" data-target="#exampleModal3" class="btn btn-secondary">detalhes</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!--MODALS-->
+
+<!--adicionar-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit1()">
+
+          <div class="form-group">
+            <label>Nome</label>
+            <input formControlName="nome" type="text" class="form-control" placeholder="nome">
+            <br />
+            <label>FornecedorId</label>
+            <input formControlName="fornecedorId" name="fornecedorId" type="number" class="form-control" value="" aria-describedby="fornecedorId" placeholder="fornecedorId">
+          
+          </div>
+
+          <button type="button" class="btn btn-secondary botao" data-dismiss="modal">Fechar</button>
+          <button type="submit" [disabled]="!profileForm.valid" name="button" class="btn btn-primary botao">Salvar</button>
+        </form>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<!--edit-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label>ID</label>
+              <input disabled="" type="text" value="" class="form-control">
+              <br />
+              <label>Nome</label>
+              <input formControlName="nome" name="nome" type="text" class="form-control" value="" aria-describedby="nome" placeholder="nome">
+            
+              <br />
+              <label>FornecedorId</label>
+              <input formControlName="fornecedorId" name="fornecedorId" type="text" class="form-control" value="" aria-describedby="fornecedorId" placeholder="fornecedorId">
+            
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" [disabled]="!profileForm.valid" name="button" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--detalhes-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label>ID</label>
+          <input disabled="" type="text" value="" class="form-control">
+          <br />
+          <label>Nome</label>
+          <input disabled="" type="text" value="" class="form-control">
+          <br />
+          <label>FornecedorId</label>
+          <input disabled="" type="number" value="" class="form-control">
+          <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+</div>

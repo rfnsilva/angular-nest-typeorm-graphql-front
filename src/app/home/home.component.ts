@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,10 @@ export class HomeComponent implements OnInit {
   }
 
   javascript() {
-    
+    $(document).ready(function () {
+      $("#navbar-admin").css("display", "none");
+      $("#navbar-cliente").css("display", "block");
+    });
   }
 
 }

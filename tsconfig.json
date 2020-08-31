@@ -13,8 +13,9 @@
     "target": "es2015",
     "lib": [
       "es2018",
-      "dom"
-    ]
+      "dom",
+      "ESNext.AsyncIterable"
+    ],
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
