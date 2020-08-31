@@ -47,6 +47,21 @@ export class AdminFornecedorComponent implements OnInit {
         let aux: any = data;
         this.fornecedores = aux.getFornecedores;
      })
+     
+    this.apollo.subscribe({
+      query: gql`
+        subscription{
+          fornecedorAdded{
+            id,
+            nome,
+            cnpj,
+            endereco,
+            telefone,
+            createdAt
+          }
+        }
+      `,
+    })
   }
 
   deletar(id: number) {
@@ -113,7 +128,7 @@ export class AdminFornecedorComponent implements OnInit {
             endereco,
             telefone
           }
-        }
+        },
       `,
     }).subscribe(({ data }) => {
       let aux: any = data;

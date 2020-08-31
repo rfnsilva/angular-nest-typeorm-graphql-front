@@ -21,11 +21,13 @@
     "@angular/router": "~9.1.11",
     "@types/jquery": "^3.5.1",
     "apollo-angular-boost": "^1.9.0",
+    "apollo-link-ws": "^1.0.20",
     "bootstrap": "^4.5.2",
     "flickity": "^2.2.1",
     "jquery": "^3.5.1",
     "popper": "^1.0.1",
     "rxjs": "~6.5.4",
+    "subscriptions-transport-ws": "^0.9.18",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
