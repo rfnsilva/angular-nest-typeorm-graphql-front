@@ -15,14 +15,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Nome</td>
-        <td>FornecedorId</td>
+      <tr *ngFor="let categoria of categorias">
+        <th scope="row">{{categoria?.id}}</th>
+        <td>{{categoria?.nome}}</td>
+        <td>{{categoria?.fornecedorId}}</td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
-                <button type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-secondary">del</button>
+                <button (click)="preEditar(categoria?.id)" type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
+                <button (click)="deletar(categoria?.id)" type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-secondary">del</button>
                 <button type="button" data-toggle="modal" data-target="#exampleModal3" class="btn btn-secondary">detalhes</button>
             </div>
         </td>

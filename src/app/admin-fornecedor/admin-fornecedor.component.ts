@@ -48,7 +48,6 @@ export class AdminFornecedorComponent implements OnInit {
       .subscribe(({ data }) => {
         let aux: any = data;
         this.fornecedores = aux.getFornecedores;
-        console.log(this.fornecedores)
       })
     
      
@@ -68,8 +67,6 @@ export class AdminFornecedorComponent implements OnInit {
     }).subscribe(data => {
       let aux: any = data;
       this.fornecedores.push(aux.data.fornecedorAdded);
-      console.log(aux)
-      console.log(this.fornecedores)
     })
   }
     
