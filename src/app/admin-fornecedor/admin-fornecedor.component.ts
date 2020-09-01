@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
 
-import { Apollo, gql } from 'apollo-angular-boost';
+import { Apollo } from 'apollo-angular-boost';
+import gql from 'graphql-tag';
 
 @Component({
   selector: 'app-admin-fornecedor',
@@ -26,9 +27,11 @@ export class AdminFornecedorComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
+    //lembrar a de alterar os retornos dos metodos mutation para retornar
+    //apenas o criado ou deletado e depois realizar um push no this.fornecedores
     this.javascript();
 
-    this.apollo.watchQuery({
+    this.apollo.query({
       query: gql`
         query {
           getFornecedores {
@@ -42,11 +45,12 @@ export class AdminFornecedorComponent implements OnInit {
         }
       `,
     })
-     .valueChanges
       .subscribe(({ data }) => {
         let aux: any = data;
         this.fornecedores = aux.getFornecedores;
-     })
+        console.log(this.fornecedores)
+      })
+    
      
     this.apollo.subscribe({
       query: gql`
@@ -61,8 +65,14 @@ export class AdminFornecedorComponent implements OnInit {
           }
         }
       `,
+    }).subscribe(data => {
+      let aux: any = data;
+      this.fornecedores.push(aux.data.fornecedorAdded);
+      console.log(aux)
+      console.log(this.fornecedores)
     })
   }
+    
 
   deletar(id: number) {
     this.apollo.mutate({

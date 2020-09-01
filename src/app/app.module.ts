@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { ApolloBoostModule, ApolloBoost, Subscription, split } from 'apollo-angular-boost';
+import { ApolloBoostModule, Apollo } from 'apollo-angular-boost';
 import {WebSocketLink} from 'apollo-link-ws';
 import { HttpLink } from 'apollo-angular-link-http';
 import { getMainDefinition } from 'apollo-utilities';
-import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+import { split } from 'apollo-link';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -48,33 +50,32 @@ import uri from './config/graphql.module'
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private apolloBoost: ApolloBoost, private httpLink: HttpLink) {
+  constructor(private apollo: Apollo, private httpLink: HttpLink) {
 
-    const http = httpLink.create({
+    const http = this.httpLink.create({
       uri: 'http://localhost:3000/graphql'
     })
 
     const wsLink = new WebSocketLink({
-      uri: 'ws://localhost:5000/',
+      uri: 'ws://localhost:3000/graphql',
       options: {
         reconnect: true
       }
     })
 
-    // using the ability to split links, you can send data to each link
-    // depending on what kind of operation is being sent
     const link = split(
-      // split based on operation type
       ({ query }) => {
         const definition = getMainDefinition(query);
-        return definition.kind === 'OperationDefinition' && definition.operation === 'subscription';
+        return (definition.kind === 'OperationDefinition') && (definition.operation === 'subscription');
       },
       wsLink,
       http,
     );
 
-    export default new apolloBoost({
-      link
-    })
+    this.apollo.create({
+      link,
+      cache: new InMemoryCache()
+    });
+
   }
 }
