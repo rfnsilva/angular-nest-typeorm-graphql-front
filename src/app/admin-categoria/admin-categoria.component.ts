@@ -27,6 +27,7 @@ export class AdminCategoriaComponent implements OnInit {
     //apenas o criado ou deletado e depois realizar um push no this.fornecedores
     this.javascript();
 
+    //query que retorna todas as categoria salvas no banco
     this.apollo.query({
       query: gql`
         query {
@@ -41,10 +42,10 @@ export class AdminCategoriaComponent implements OnInit {
     })
       .subscribe(({ data }) => {
         let aux: any = data;
-        this.categorias.push(aux.getCategorias);
+        this.categorias = aux.getCategorias;
       })
     
-     
+    //subscription que esculta mudanças(add) na tabela de categorias
     this.apollo.subscribe({
       query: gql`
         subscription{
@@ -58,8 +59,26 @@ export class AdminCategoriaComponent implements OnInit {
       `,
     }).subscribe(data => {
       let aux: any = data;
-      console.log(aux)
+      this.categorias.push(aux.data.categoriaAdded);
     })
+
+    //subscription que esculta mudanças(del) na tabela de categorias
+    this.apollo.subscribe({
+      query: gql`
+        subscription{
+          categoriaDeleteAdded{
+            id,
+            nome,
+            fornecedorId
+          }
+        }
+      `,
+    }).subscribe(data => {
+      const aux: any = data;
+      console.log(aux)
+      this.categorias = aux.data.categoriaDeleteAdded;
+    })
+
   }
     
 
