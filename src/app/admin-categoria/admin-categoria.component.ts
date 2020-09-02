@@ -41,7 +41,7 @@ export class AdminCategoriaComponent implements OnInit {
     })
       .subscribe(({ data }) => {
         let aux: any = data;
-        this.categorias = aux.getCategorias;
+        this.categorias.push(aux.getCategorias);
       })
     
      
@@ -59,9 +59,6 @@ export class AdminCategoriaComponent implements OnInit {
     }).subscribe(data => {
       let aux: any = data;
       console.log(aux)
-      //this.categorias.push(aux.data.categoriaAdded);
-      //let pos = aux.indexOf(aux.data.categoriaAdded);
-      //console.log(pos)
     })
   }
     
