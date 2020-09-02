@@ -7,6 +7,7 @@ import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
 import { AdminFornecedorComponent } from './admin-fornecedor/admin-fornecedor.component';
 import { AdminCategoriaComponent } from './admin-categoria/admin-categoria.component';
 import { AdminContaComponent } from './admin-conta/admin-conta.component';
+import { AdminVendaComponent } from './admin-venda/admin-venda.component'
 
 const routes: Routes = [
   { path: '',   redirectTo: 'admin-home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'admin-fornecedor', component: AdminFornecedorComponent },
   { path: 'admin-categoria', component: AdminCategoriaComponent },
   { path: 'admin-conta', component: AdminContaComponent },
+  { path: 'admin-venda', component: AdminVendaComponent },
 ];
 
 @NgModule({

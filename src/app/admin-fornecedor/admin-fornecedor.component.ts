@@ -51,6 +51,7 @@ export class AdminFornecedorComponent implements OnInit {
       })
     
      
+    //subscription que esculta mudanças(del) na tabela de fornecedores
     this.apollo.subscribe({
       query: gql`
         subscription{
@@ -67,6 +68,25 @@ export class AdminFornecedorComponent implements OnInit {
     }).subscribe(data => {
       let aux: any = data;
       this.fornecedores.push(aux.data.fornecedorAdded);
+    })
+
+    //subscription que esculta mudanças(del) na tabela de fornecedores
+    this.apollo.subscribe({
+      query: gql`
+        subscription{
+          fornecedorDeleteAdded{
+            id,
+            nome,
+            cnpj,
+            endereco,
+            telefone,
+            createdAt
+          }
+        }
+      `,
+    }).subscribe(data => {
+      const aux: any = data;
+      this.fornecedores = aux.data.fornecedorDeleteAdded;
     })
   }
     

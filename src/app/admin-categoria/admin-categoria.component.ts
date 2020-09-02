@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Apollo, gql } from 'apollo-angular-boost';
 import * as $ from 'jquery';
+
+import { Apollo } from 'apollo-angular-boost';
+import gql from 'graphql-tag';
 
 @Component({
   selector: 'app-admin-categoria',
@@ -75,12 +77,10 @@ export class AdminCategoriaComponent implements OnInit {
       `,
     }).subscribe(data => {
       const aux: any = data;
-      console.log(aux)
       this.categorias = aux.data.categoriaDeleteAdded;
     })
 
   }
-    
 
   deletar(id: number) {
     console.log(id)
