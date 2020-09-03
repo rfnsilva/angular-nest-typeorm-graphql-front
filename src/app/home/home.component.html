@@ -1,12 +1,15 @@
 <!-- Compare basket -->
-<div class="compare-basket">
-  <button class="action action--button action--compare"><i class="fa fa-check"></i><span class="action__text">Compare</span></button>
+<div *ngIf="comparar_boolean" class="compare-basket compare-basket--active .action--compare">
+  <button class="action action--button-top action--compare-top">
+    <i class="fa fa-check" style="color:#565B6C"></i>
+    <span class="action__text-top" style="color:#565B6C">Comparar</span>
+  </button>
 </div>
 <!-- Main view -->
 <div class="view">
   <!-- Blueprint header -->
   <header class="bp-header cf">
-    <span>Le Vinho <span class="bp-icon bp-icon-about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+    <span>Le Vinho <span class="bp-icon bp-icon-about" data-content="The Blueprint layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
     <h1>Vinhos Especiais &amp; Petiscos</h1>
   </header>
   <!-- Product grid -->
@@ -15,19 +18,37 @@
     <div *ngFor="let produto of produtos" class="product">
       <div class="product__info">
         <img class="product__image" src="../../assets/images/1.png" alt="Product 1" />
-        <h3 class="product__title">{{produto.nome}}</h3>
+        <h3 class="product__title">{{produto?.nome}}</h3>
         <span class="product__year extra highlight">2011</span>
         <span class="product__region extra highlight">Douro</span>
         <span class="product__varietal extra highlight">Touriga Nacional</span>
         <span class="product__alcohol extra highlight">13%</span>
-        <span class="product__price highlight">${{produto.valor}}</span>
-        <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Add to cart</span></button>
+        <span class="product__price highlight">${{produto?.valor}}</span>
+        <button class="action action--button action--buy">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="action__text">Add ao cart</span>
+        </button>
       </div>
-      <label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to compare</span></label>
+
+      <label class="action action--compare-add">
+        <input class="check-hidden" type="checkbox" (change)="checkbox(produto.id)" />
+
+        <div *ngIf="produto.checked; else else_checked">
+          <i class="fa fa-check"></i>
+        </div>
+
+        <ng-template #else_checked>
+          <i *ngIf="verifica_qtd_comparar_boolean" class="fa fa-plus"></i>
+        </ng-template>
+
+        <span class="action__text action__text--invisible">Add comparar</span>
+      </label>
+
+
     </div>
   </section>
-</div><!-- /view -->
-<!-- product compare wrapper -->
-<section class="compare">
-  <button class="action action--close"><i class="fa fa-remove"></i><span class="action__text action__text--invisible">Close comparison overlay</span></button>
-</section>
+</div>
+
+<!--
+
+-->

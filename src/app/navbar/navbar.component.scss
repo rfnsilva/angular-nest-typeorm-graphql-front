@@ -1,6 +1,7 @@
 .bar {
     position: fixed;
-    z-index: 10000;
+    z-index: 100;
+    bottom: 0;
     left: 0;
     width: 100%;
     padding: 1.75em 5em;
@@ -9,7 +10,8 @@
     -webkit-transform: translate3d(0, 0, 0);
 }
 
-.filter {
+.flexbox .filter {
+    display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
@@ -20,7 +22,7 @@
 .filter__label {
     font-size: .85em;
     display: inline-block;
-    margin: 0 2%;
+    margin: 0 2% !important;
     font-weight: bold;
     color: #393A3F;
 }
@@ -32,11 +34,11 @@
 
 .filter__item {
     font-weight: bold;
-    margin: 0 2%;
+    margin: 0 2% !important;
     padding: .1em;
     vertical-align: middle;
-    color: #a3a3b3;
-    border-bottom: 2px solid transparent !important;
+    color: #a3a3b3 ;
+    border-bottom: 2px solid transparent;
 }
 
 .action {
@@ -48,6 +50,7 @@
     padding: .25em;
     cursor: pointer;
     color: #fff;
+    border: none;
     background: none;
 }
 
@@ -112,26 +115,6 @@
     border-radius: 50%;
     background: #5c5edc;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
