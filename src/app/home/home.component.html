@@ -12,41 +12,15 @@
   <!-- Product grid -->
   <section class="grid">
     <!-- Products -->
-    <div class="product">
+    <div *ngFor="let produto of produtos" class="product">
       <div class="product__info">
         <img class="product__image" src="../../assets/images/1.png" alt="Product 1" />
-        <h3 class="product__title">Chryseia</h3>
+        <h3 class="product__title">{{produto.nome}}</h3>
         <span class="product__year extra highlight">2011</span>
         <span class="product__region extra highlight">Douro</span>
         <span class="product__varietal extra highlight">Touriga Nacional</span>
         <span class="product__alcohol extra highlight">13%</span>
-        <span class="product__price highlight">$55.90</span>
-        <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Add to cart</span></button>
-      </div>
-      <label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to compare</span></label>
-    </div>
-    <div class="product">
-      <div class="product__info">
-        <img class="product__image" src="../../assets/images/1.png" alt="Product 1" />
-        <h3 class="product__title">Chryseia</h3>
-        <span class="product__year extra highlight">2011</span>
-        <span class="product__region extra highlight">Douro</span>
-        <span class="product__varietal extra highlight">Touriga Nacional</span>
-        <span class="product__alcohol extra highlight">13%</span>
-        <span class="product__price highlight">$55.90</span>
-        <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Add to cart</span></button>
-      </div>
-      <label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to compare</span></label>
-    </div>
-    <div class="product">
-      <div class="product__info">
-        <img class="product__image" src="../../assets/images/1.png" alt="Product 1" />
-        <h3 class="product__title">Chryseia</h3>
-        <span class="product__year extra highlight">2011</span>
-        <span class="product__region extra highlight">Douro</span>
-        <span class="product__varietal extra highlight">Touriga Nacional</span>
-        <span class="product__alcohol extra highlight">13%</span>
-        <span class="product__price highlight">$55.90</span>
+        <span class="product__price highlight">${{produto.valor}}</span>
         <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Add to cart</span></button>
       </div>
       <label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to compare</span></label>
